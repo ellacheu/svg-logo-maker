@@ -12,7 +12,7 @@ This application was created so that the user may generate a logo for personal p
 - [Tests](#tests)
         
 ## Installation
-git clone repo : (git@github.com:ellacheu/svg-logo-maker.git) <br>
+git clone repo : (https://github.com/ellacheu/svg-logo-maker.git) <br>
 cd svg-logo-maker<br>
 npm install<br>
 node index.js<br>
