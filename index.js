@@ -8,6 +8,12 @@ const questions = [
         type: 'input',
         name: 'characters',
         message: 'Enter up to three characters for the logo text',
+        validate: function(answer) {
+            if (answer.length > 3) {
+                return console.log(" Attention: Input needs to be 3 characters or less")
+            }
+            return true
+        }
     },
     {
         type: 'input',
@@ -28,8 +34,45 @@ const questions = [
 ];
 
 // generate logo based off of prompt inputs //
-function generateLogo(answer) {
+function generateLogo(answers) {
     const { characters, textColor, shape, shapeColor } = answers;
+    let shapeGenerate;
+
+    switch (shape) {
+        case 'triangle':
+            shapeGenerate = new Triangle();
+            break;
+
+        case 'square':
+            shapeGenerate = new Square();
+            break;
+
+        case 'circle':
+            shapeGenerate = new Circle();
+            break;
+
+        default:
+            console.log('Invalid Shape');
+            return;
+    }
+
+    shapeGenerate.setColor(shapeColor);
+
+    const svgImage = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+    ${shapeGenerate.render()}
+    <text x='50%' y='50%' text-anchor='middle' dominant-baseline='middle' fill='${textColor}' font-size='50' font-family='serif'>${characters}</text>
+    </svg>
+    `;
+
+    fs.writeFile('logo.svg', svgImage, (err) => {
+        if (err) {
+            console.error('Error generating SVG file', err);
+        
+        } else {
+            console.log('SVG logo generated successfully!');
+        }
+    });
 }
 
 // initalize application //
@@ -41,20 +84,3 @@ function init() {
 }
 
 init();
-
-
-
-// GIVEN a command-line application that accepts user input
-// WHEN I am prompted for text
-// THEN I can enter up to three characters
-// WHEN I am prompted for the text color
-// THEN I can enter a color keyword (OR a hexadecimal number)
-// WHEN I am prompted for a shape
-// THEN I am presented with a list of shapes to choose from: circle, triangle, and square
-// WHEN I am prompted for the shape's color
-// THEN I can enter a color keyword (OR a hexadecimal number)
-// WHEN I have entered input for all the prompts
-// THEN an SVG file is created named `logo.svg`
-// AND the output text "Generated logo.svg" is printed in the command line
-// WHEN I open the `logo.svg` file in a browser
-// THEN I am shown a 300x200 pixel image that matches the criteria I entered
