@@ -12,10 +12,10 @@ This application was created so that the user may generate a logo for personal p
 - [Tests](#tests)
         
 ## Installation
-git clone repo : git@github.com:ellacheu/svg-logo-maker.git
-cd svg-logo-maker
-npm install
-node index.js
+git clone repo : (git@github.com:ellacheu/svg-logo-maker.git) <br>
+cd svg-logo-maker<br>
+npm install<br>
+node index.js<br>
 
 ## Usage
 
@@ -38,6 +38,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [MDN Web Docs](https://developer.mozilla.org/en-US/) <br> [W3 Schools](https://www.w3schools.com/)
 
 ## Tests
-Install using npm i jest
-Run jest in the command line
-Three function test will run to generate the logo with the assign color
+Install using npm i jest<br>
+Run jest in the command line<br>
+Three function test will run to generate the logo string with the assign color<br>
