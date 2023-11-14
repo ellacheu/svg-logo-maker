@@ -64,7 +64,7 @@ function generateLogo(answers) {
     <text x='50%' y='50%' text-anchor='middle' dominant-baseline='middle' fill='${textColor}' font-size='50' font-family='serif'>${characters}</text>
     </svg>
     `;
-
+// write file function to generate logo in logo.svg
     fs.writeFile('logo.svg', svgImage, (err) => {
         if (err) {
             console.error('Error generating SVG file', err);
